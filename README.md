@@ -1,6 +1,7 @@
 # docker-zentao
 
 禅道Docker Image File（开源版）
+本代码，直接同步自官方 https://www.zentao.net/book/zentaopmshelp/303.html 
 
 数据库用户名：root,默认密码：123456。运行时，可以设置MYSQL_ROOT_PASSWORD变量来更改密码。
 
