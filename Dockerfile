@@ -23,4 +23,7 @@ COPY config/00-ioncube.ini /etc/php/7.0/apache2/conf.d/
 COPY config/00-ioncube.ini /etc/php/7.0/cli/conf.d/
 
 VOLUME /app/zentaopms /var/lib/mysql
+
+EXPOSE 80
+
 ENTRYPOINT ["/app/docker-entrypoint.sh"]
