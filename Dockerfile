@@ -1,19 +1,16 @@
 FROM ubuntu:16.04
 MAINTAINER yidong <yidong@cnezsoft.com>
 
-RUN apt-get update && apt-get install -y apache2 mariadb-server php php-curl php-gd php-ldap php-mbstring php-mcrypt php-mysql php-xml php-zip php-cli php-json curl unzip libapache2-mod-php locales
-
 ENV LANG="en_US.UTF8"
-#ENV MYSQL_ROOT_PASSWORD="123456"
-RUN echo -e "LANG=\"en_US.UTF-8\"\nLANGUAGE=\"en_US:en\"" > /etc/default/locale && locale-gen en_US.UTF-8
 
-RUN mkdir -p /app/zentaopms
+RUN apt-get update && apt-get install -y apache2 mariadb-server php php-curl php-gd php-ldap php-mbstring php-mcrypt php-mysql php-xml php-zip php-cli php-json curl unzip libapache2-mod-php locales && \
+    echo -e "LANG=\"en_US.UTF-8\"\nLANGUAGE=\"en_US:en\"" > /etc/default/locale && locale-gen en_US.UTF-8 && \
+    mkdir -p /app/zentaopms
 COPY docker-entrypoint.sh /app
-RUN random=`date +%s`; curl http://cdn.zentaopm.com/latest/zentao.zip?rand=$random -o /var/www/zentao.zip
-RUN cd /var/www/ && unzip -q zentao.zip && rm zentao.zip
-RUN a2enmod rewrite
-
-RUN rm -rf /etc/apache2/sites-enabled/000-default.conf /var/lib/mysql/* && \
+RUN random=`date +%s`; curl http://cdn.zentaopm.com/latest/zentao.zip?rand=$random -o /var/www/zentao.zip && \
+    cd /var/www/ && unzip -q zentao.zip && rm zentao.zip && \
+    a2enmod rewrite && \
+    rm -rf /etc/apache2/sites-enabled/000-default.conf /var/lib/mysql/* && \
     sed -i '1i ServerName 127.0.0.1' /etc/apache2/apache2.conf && \
 	chmod +x /app/docker-entrypoint.sh
 
