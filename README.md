@@ -15,13 +15,13 @@
 ---
 
 
-对于MYSQL8的错误“数据库连接失败
+对于MYSQL8的错误
 ```
-SQLSTATE[HY000] [2054] The server requested authentication method unknown to the client”
+数据库连接失败 SQLSTATE[HY000] [2054] The server requested authentication method unknown to the client
 ```
-单独创建用户使用密码规则`mysql_native_password` 
+进入 docker 升级php版本
 ```
-CREATE USER `zentao`@`%` IDENTIFIED WITH mysql_native_password BY 'zentao';
+docker exec -it zentao /bin/bash
+apt-get install software-properties-common && add-apt-repository ppa:ondrej/php && apt-get update && apt-get upgrade php
 ```
-
 
