@@ -1,4 +1,4 @@
-FROM ubuntu:latest
+FROM ubuntu:19.04
 #FROM ubuntu:16.04
 MAINTAINER yidong <yidong@cnezsoft.com>
 
