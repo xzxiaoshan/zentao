@@ -1,4 +1,5 @@
-FROM ubuntu:16.04
+FROM ubuntu:latest
+#FROM ubuntu:16.04
 MAINTAINER yidong <yidong@cnezsoft.com>
 
 ENV LANG="en_US.UTF8"
