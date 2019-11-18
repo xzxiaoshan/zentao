@@ -11,3 +11,17 @@
 
 首次运行容器后，浏览器访问http://IP:端口，如果界面显示禅道安装界面，说明容器运行正常。
 依照安装程序，最后将禅道安装成功，就可以使用禅道了。
+
+---
+
+
+对于MYSQL8的错误“数据库连接失败
+```
+SQLSTATE[HY000] [2054] The server requested authentication method unknown to the client”
+```
+单独创建用户使用密码规则`mysql_native_password` 
+```
+CREATE USER `zentao`@`%` IDENTIFIED WITH mysql_native_password BY 'zentao';
+```
+
+
